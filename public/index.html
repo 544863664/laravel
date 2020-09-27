@@ -6,7 +6,7 @@
     </head>
     <body>
         <div id="main">
-            <div align="center"><b>*******</b></div>
+            <div align="center" class="center"><b>*******</b></div>
             <!-- <div align="center"><b>恭喜您，安装成功！</b></div> -->
             <!-- <div align="center"><img src="images/lnmp.gif"></div> -->
         </div>
@@ -15,12 +15,13 @@
     <script type="text/javascript">
         $.ajax({
             type: 'get',
-            url: '/api/bar',
+            url: '/laravel/public/api/bar',
+            // url: '/api/bar',
             headers: {
                 "content-type": "application/json",
             },
             success: function(res) {
-                console.log(res)
+                $('.center').html(res);
             }
         })
     </script>
