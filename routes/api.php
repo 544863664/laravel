@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::any('/bar', function () {
     return 'This is a request from any HTTP verb';
 });
+
+Route::get('/goodslist', 'App\Http\Controllers\Api\Apidemo@Goodslist');
+Route::post('/good', 'App\Http\Controllers\Api\Apidemo@Good');
+

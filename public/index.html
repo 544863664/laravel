@@ -10,9 +10,105 @@
             <!-- <div align="center"><b>恭喜您，安装成功！</b></div> -->
             <!-- <div align="center"><img src="images/lnmp.gif"></div> -->
         </div>
+        <div class="box">
+            <table border="1" bordercolor="#a0c6e5" style="border-collapse:collapse;width: 100%;">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>passPrice</th>
+                        <th>nowPrice</th>
+                        <th>type</th>
+                        <th>intor</th>
+                        <th>gift</th>
+                        <th>labels</th>
+                        <th>evaluate</th>
+                        <th>mess</th>
+                    </tr>
+                </thead>
+                <tbody class="list"></tbody>
+            </table>
+        </div>
     </body>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript">
+        // postgoods();
+        getgoodslist();
+
+        function getgoodslist() {
+            $.ajax({
+                type: 'get',
+                url: '/apidemo/public/api/goodslist',
+                data: {
+                    name: ''
+                },
+                headers: {
+                    "content-type": "application/json",
+                },
+                success: function(response) {
+                    if (response.code == 200) {
+                        var data = response.data;
+                        for (var i = 0; i < data.length; i++) {
+                            $('.box .list').append(`
+        								<tr>
+        									<td>` + data[i].id +
+                                `</td>
+        									<td>` + data[i].name +
+                                `</td>
+        									<td>` + data[i].passPrice +
+                                `</td>
+        									<td>` + data[i].nowPrice +
+                                `</td>
+        									<td>` + data[i].type +
+                                `</td>
+        									<td>` + data[i].intor +
+                                `</td>
+        									<td>` + data[i].gift +
+                                `</td>
+        									<td>` + data[i].labels +
+                                `</td>
+        									<td>` + data[i].evaluate +
+                                `</td>
+        									<td>` + data[i].mess +
+                                `</td>
+        								</tr>
+        							`);
+                        }
+                    }
+                }
+            })
+        };
+
+        function postgoods() {
+            $.ajax({
+                type: 'post',
+                url: '/apidemo/public/api/good',
+                headers: {
+                    "content-type": "application/json",
+                },
+                data: {
+                    id: 20, // 添加不需要传id   修改 、删除 需要传
+                    name: '小米10 Pro 5G',
+                    passPrice: '6999',
+                    nowPrice: '5999',
+                    type: '手机',
+                    intor: '',
+                    gift: '赠品|赠米粉卡|`折扣',
+                    labels: '新品',
+                    evaluate: '质量很好，颜值很高',
+                    mess: '',
+                    img: '',
+                    capacity: '',
+                    color: '深空灰',
+                    littleImg: '',
+                    colorImg: '',
+
+                },
+                success: function(response) {
+                    alert(response.msg);
+                }
+            })
+        };
         $.ajax({
             type: 'get',
             // url: '/laravel/public/api/bar',
