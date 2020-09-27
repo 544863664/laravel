@@ -38,7 +38,7 @@
         function getgoodslist() {
             $.ajax({
                 type: 'get',
-                url: '/apidemo/public/api/goodslist',
+                url: '/api/goodslist',
                 data: {
                     name: ''
                 },
@@ -82,7 +82,7 @@
         function postgoods() {
             $.ajax({
                 type: 'post',
-                url: '/apidemo/public/api/good',
+                url: '/api/good',
                 headers: {
                     "content-type": "application/json",
                 },
