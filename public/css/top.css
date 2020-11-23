@@ -1,0 +1,19 @@
+@charset "utf-8";
+/*top_bar*/
+#top_bar { line-height: 41px; height: 41px; background-color: #fafafa; border-bottom: 1px solid #ebebeb; color: #666; font-size: 12px; }
+#top_bar a { color: #555; }#top_bar a:hover { color: #ff1300; text-decoration: none; }
+.top_l a { margin-right: 25px; }
+.top_r { float: right; margin: px 0 0 20px; position: relative; z-index: 9; }
+.top_r .ff { font-size: 20px;font-family: 'ff'; display: inline-block; margin-left: 10px; }
+.wx { color: #8dbd29; }.sina { color: #FF5A5A; }
+.wx_tu { display: none; left: -22px; position: absolute; top: 32px; z-index: 9; }
+/*top_bar全站导航*/
+.all_nav { position: relative; z-index: 100; }
+.an_pop {border:2px solid #bbb;overflow:hidden;width:602px;background-color:#fff;margin-left:-1px;color:#333;position:absolute;top:41px;left:-157px;}
+.an_col { float: left; width: 86px; border-left: 1px solid #ebebeb; margin-left: -1px; height: 279px; }
+.an_col .h a { color: #333; line-height: 38px; height: 38px; overflow: hidden; font-weight: bold; font-size: 14px; text-align: center; display: block; border-bottom: 1px solid #ebebeb; padding: 0 3px; }
+.an_col .h a:hover { color: #ff3600; }
+.an_col .sub a { color: #333; display: block; line-height: 30px; height: 30px; overflow: hidden; text-align: center; }
+.an_col .sub a:hover { background-color: #f0f0f0; color: #ff3600; }
+.all_nav .arrow { display: block; position: absolute; top: 35px; left: 35px; width: 16px; height: 8px; background: url(../images/an_tri.png) no-repeat; z-index: 1; }
+
