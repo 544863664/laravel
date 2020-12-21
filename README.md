@@ -7,6 +7,31 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## 安装依赖
+```
+	composer install
+```
+
+## 创建.env文件
+```
+	cp .env.example .env
+```
+
+## 运行本地laravel
+```
+	php artisan serve
+```
+
+## APP_KEY生成
+```
+	php artisan key:generate 
+```
+
+## 自定命令以及生成文件
+```
+	php artisan make:model 要生成的文件
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
