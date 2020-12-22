@@ -38,9 +38,10 @@ class Jscode2session extends Controller
 			
 			if (!$setOpenid) {
 				# 新用户创建数据
+				$time = date('Y-m-d Y:i:s', time() + 28800);
 				$openidInsert = DB::insert(
-					'insert into wechatuser (id, openid, session_key, nickName, gender, language, country, city, province, avatarUrl, status) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-					[NULL, $openid, $session_key, '', '', '', '', '', '', '', '1']
+					'insert into wechatuser (id, openid, session_key, nickName, gender, language, country, city, province, avatarUrl, status, time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+					[NULL, $openid, $session_key, '', '', '', '', '', '', '', '1', $time]
 				);
 				return $response;
 			} 
@@ -59,9 +60,11 @@ class Jscode2session extends Controller
 			// }
 			
 			
+		} else {
+			$response['code'] = 0;
+			$response['msg'] = 'The parameter code cannot be null.';
+			return $response;
 		}
-		$response['code'] = 0;
-		$response['msg'] = 'The parameter code cannot be null.';
-		return $response;
+		
 	}
 }
