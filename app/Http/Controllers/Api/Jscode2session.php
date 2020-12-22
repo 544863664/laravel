@@ -9,7 +9,7 @@ class Jscode2session extends Controller
 {
     //
 	public function getJscode2session(Request $request) {
-		$response = array("code" => 200, "msg" => "success", "data" => "");
+		$response = array("code" => 200, "msg" => "success");
 		
 		$code = $request->code;
 		$appid = 'wx0ac5669cb2a4a6b8';
@@ -18,9 +18,9 @@ class Jscode2session extends Controller
 		$url = 'https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid='.$appid.'&secret='.$secret.'&js_code='.$code;
 		
 		$jscode2session = file_get_contents($url);
-		// $session_key = '';
-		// $openid = '';
-		$response['data'] = $jscode2session;
+		
+		$response['session_key'] = json_decode($jscode2session, true)['session_key'];
+		$response['openid'] = json_decode($jscode2session, true)['openid'];
 		return $response;
 	}
 }
