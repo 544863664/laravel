@@ -10,7 +10,7 @@ class Jscode2session extends Controller
 {
     //
 	public function getJscode2session(Request $request) {
-		$response = array("code" => 200, "msg" => "success", "data" => "");
+		$response = array("code" => 200, "msg" => "success");
 		
 		$appid = 'wx0ac5669cb2a4a6b8';
 		$secret = '803bf67e6eed2786824e4db88772f87a';
@@ -29,8 +29,6 @@ class Jscode2session extends Controller
 			
 			$access_token = file_get_contents($access_tokenurl);
 			
-			$response['data'] = json_decode($access_token, true);
-			
 			$openid = json_decode($jscode2session, true)['openid'];
 			$session_key = json_decode($jscode2session, true)['session_key'];
 			
@@ -43,8 +41,11 @@ class Jscode2session extends Controller
 					'insert into wechatuser (id, openid, session_key, nickName, gender, language, country, city, province, avatarUrl, status, time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
 					[NULL, $openid, $session_key, '', '', '', '', '', '', '', '1', $time]
 				);
-				return $response;
-			} 
+			}
+			
+			$response['data'] = json_decode($access_token, true);
+			return $response;
+			
 			// else {
 			// 	# 老用户读取、修改数据
 			// 	$id_ = '';
